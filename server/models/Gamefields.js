@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/sequelize');
 
-const gamefield = sequelize.define('Gamefield', {
+const Gamefield = sequelize.define('Gamefield', {
   id: Sequelize.INTEGER,
   type: Sequelize.STRING,
   description: Sequelize.STRING,
