@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../services/sequelize');
+const sequelize = require('../services/sequelize').getInstance();
 
 const Gamefield = sequelize.define('Gamefield', {
   id: Sequelize.INTEGER,
