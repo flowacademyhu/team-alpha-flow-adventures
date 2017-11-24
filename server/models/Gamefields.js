@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/sequelize');
 
-const gamefield = sequelize.define('Gamefields', {
+const gamefield = sequelize.define('Gamefield', {
   id: Sequelize.INTEGER,
   type: Sequelize.STRING,
   description: Sequelize.STRING,
@@ -9,4 +9,4 @@ const gamefield = sequelize.define('Gamefields', {
   acces: Sequelize.BOOLEAN
 });
 
-module.exports = gamefield;
+module.exports = Gamefield;
