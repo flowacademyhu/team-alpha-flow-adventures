@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/sequelize').getInstance();
 
-const Item = sequelize.define('student', {
+const Item = sequelize.define('Item', {
   name: Sequelize.STRING,
   description: Sequelize.TEXT,
   health_modifier: Sequelize.INTEGER,
