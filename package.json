@@ -14,8 +14,11 @@
   "license": "GPL-3.0",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
-    "readline-sync": "^1.4.7"
+    "mysql2": "^1.5.1",
+    "readline-sync": "^1.4.7",
+    "sequelize": "^4.22.15"
   }
 }
