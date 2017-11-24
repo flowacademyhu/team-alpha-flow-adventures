@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/sequelize.js').getInstance();
 
-const Npc = sequelize.define('Npc', {
+const Npc = sequelize.define('npc', {
   id: Sequelize.INTEGER,
   name: Sequelize.STRING,
   item_id: Sequelize.INTEGER,
