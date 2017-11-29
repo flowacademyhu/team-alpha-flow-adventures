@@ -1,0 +1,68 @@
+ <table class="table">
+   <thead>
+     <tr>
+       <th>Name</th>
+       <th>Item_id</th>
+       <th>Health</th>
+       <th>Damage</th>
+       <th>Defense</th>
+       <th>Status</th>
+       <th>Alive_Desc</th>
+       <th>Dead_Desc</th>
+       <th>Alive_Far_Desc</th>
+       <th>Dead_Far_Desc</th>
+       <th>Speak</th>
+     </tr>
+   </thead>
+   <tbody>
+     {{#each npc}}
+     <tr>
+       <td>{{name}}</td>
+       <td>{{item_id}}</td>
+       <td>{{health}}</td>
+       <td>{{damage}}</td>
+       <td>{{defense}}</td>
+       <td>{{status}}</td>
+       <td>{{alive_description}}</td>
+       <td>{{dead_description}}</td>
+       <td>{{alive_far_description}}</td>
+       <td>{{dead_far_description}}</td>
+       <td>{{speak}}</td>
+       
+       <td>
+         <a href="/npc/{{id}}">Mutat / </a>
+         <a href="/npc/{{id}}/edit">Adatok frissítése</a>
+         <form action="/npc/{{id}}?_method=DELETE" method="POST">
+         <button type="submit" class="btn btn-danger">Töröl</button>
+         </form>
+
+       </td>
+     </tr>
+     {{/each}}
+   </tbody>
+
+ </table>
+
+<h2>
+    <a href="/npcs/new">New Student</a>
+</h2>
+
+{{#if lastPage}}
+  <h2>
+    <a href="/npcs?page={{next}}">Next Page</a>
+  </h2>
+{{/if}}
+
+{{#each pages}}
+  {{#currentPage this ../pageNumber}}
+    <span style="font-weight: bold">{{this}}</span>
+  {{else}}
+    <a href="/npcs?page={{../this}}">{{../this}}</a>
+  {{/currentPage}}
+{{/each}}
+
+{{#if firstPage}}
+  <h2>
+    <a href="/npcs?page={{prev}}">Previous Page</a>
+  </h2>
+{{/if}}

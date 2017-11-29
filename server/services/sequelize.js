@@ -10,7 +10,7 @@ module.exports = {
   init: (options) => {
     return sequelize
     .authenticate()
-    /* .then(() => require('../models/student')) */
+    /* .then(() => require('../models/')) */
     .then(() => sequelize.sync(options));
   },
   getInstance: () => sequelize
