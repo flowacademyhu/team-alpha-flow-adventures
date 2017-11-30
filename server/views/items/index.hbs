@@ -1,0 +1,54 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Health modifier</th>
+      <th>Damage modifier</th>
+      <th>Defense modifier</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items as |item|}}
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.health_modifier}}</td>
+        <td>{{item.damage_modifier}}</td>
+        <td>{{item.defense_modifier}}</td>
+        <td>
+          <a href="/items/{{item.id}}">Mutat</a>
+          <p><a href="/items/{{item.id}}/edit">Módosítás</a></p>
+          <form action="/items/{{item.id}}?_method=DELETE" method="post">
+              <button type="submit" class="btn btn-danger">Törlés</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+  
+</table>
+
+
+<p><a href="/items/new">Új tanuló hozzáadása</a></p>
+
+{{#if possibleNext}}
+  <p><a href="/items?page={{next}}">Következő ({{next}}. oldal)</a></p>
+{{/if}}
+{{#if possiblePrev}}
+  <p><a href="/items?page={{previous}}">Előző ({{previous}}. oldal)</a></p>
+{{/if}}
+
+{{#each pages}}
+
+ {{#currentPage this ../page}}
+
+     <span style="font-weight: bold">{{this}} </span>
+    {{else}}
+      <a href="/items?page={{../this}}">{{../this}}</a>
+
+ {{/currentPage}}
+
+{{/each}}

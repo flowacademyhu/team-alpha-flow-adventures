@@ -1,0 +1,31 @@
+<td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.health_modifier}}</td>
+        <td>{{item.damage_modifier}}</td>
+        <td>{{item.defense_modifier}}</td>
+
+<ul>
+    <p>
+      {{item.name}}
+    </p>
+    <p>
+      {{item.description}}
+    </p>
+      {{item.health_modifier}}
+    </p>
+    </p>
+      {{item.damage_modifier}}
+    </p>
+    <p>
+      {{item.defense_modifier}}
+    </p>
+</ul>
+
+<p><a href="/items/{{item.id}}/edit">Módosítás</a></p>
+
+<form action="/items/{{item.id}}?_method=DELETE" method="post">
+  <input type="submit" value="Törlés">
+</form>
+
+<p><a href="/items">Vissza</a></p>
