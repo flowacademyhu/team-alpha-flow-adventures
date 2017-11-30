@@ -3,6 +3,8 @@ const express = require('express');
 const hbs = require('hbs');
 const sequelize = require('./server/services/sequelize');
 
+const router = require('./server/routes');
+
 const app = express();
 
 app.set('views', './server/views/');
@@ -16,6 +18,7 @@ app.get('/', function (req, res) {
 app.get('/play', function (req, res) {
   res.render('play');
 });
+app.use('/', router);
 
 sequelize.init()
 .then(() => app.listen(3000))

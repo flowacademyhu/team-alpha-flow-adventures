@@ -1,0 +1,21 @@
+<ul>
+  <p>{{npc.name}}</p>
+  <p>{{npc.item_id}}</p>
+  <p>{{npc.health}}</p>
+  <p>{{npc.damage}}</p>
+  <p>{{npc.defense}}</p>
+  <p>{{npc.status}}</p>
+  <p>{{npc.alive_description}}</p>
+  <p>{{npc.dead_description}}</p>
+  <p>{{npc.alive_far_description}}</p>
+  <p>{{npc.dead_far_description}}</p>
+  <p>{{npc.speak}}</p>  
+</ul>
+
+<a href="/npcs/{{npc.id}}/edit">Adatok frissítése</a>
+
+<form action="/npcs/{{npc.id}}?_method=DELETE" method="POST">
+  <input type="submit" value="Törlés">
+</form>
+
+<a href="/npcs">Vissza</a>
