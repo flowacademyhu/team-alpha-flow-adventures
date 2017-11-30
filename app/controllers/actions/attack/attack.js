@@ -27,7 +27,7 @@ module.exports = function (npc, matrix) {
         (playerDmg >= 0) ? targetNpc.hp -= playerDmg : targetNpc.hp -= 0;
         console.log('Megtámadtad a ' + targetNpc.name + '-t ' + (playerDmg) + ' sebzéssel');
         (npcDmg >= 0) ? player.hp -= npcDmg : player.hp -= 0;
-        console.log('Megtámadott a ' + targetNpc.name + ' ' + (playerDmg) + ' sebzéssel');
+        console.log('Megtámadott a ' + targetNpc.name + ' ' + (npcDmg) + ' sebzéssel');
         console.log('--------------------------------------');
       }
       console.log('Jelenlegi életerőd ' + player.hp + ' || ellenfeled hátramaradó életereje ' + targetNpc.hp);
