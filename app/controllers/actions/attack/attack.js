@@ -21,11 +21,13 @@ module.exports = function (npc, matrix) {
         let npcRandomRoll = random(1, 6);
         console.log(n + '. kör');
         n++;
+        let playerDmg = (player.dmg + playerRandomRoll) - targetNpc.def;
+        let npcDmg = (targetNpc.str + npcRandomRoll) - player.def;
 
-        targetNpc.hp -= player.str + playerRandomRoll;
-        console.log('Megtámadtad a ' + targetNpc.name + '-t ' + (player.str + playerRandomRoll) + ' sebzéssel');
-        player.hp -= targetNpc.str + npcRandomRoll;
-        console.log('Megtámadott a ' + targetNpc.name + ' ' + (targetNpc.str + npcRandomRoll) + ' sebzéssel');
+        (playerDmg >= 0) ? targetNpc.hp -= playerDmg : targetNpc.hp -= 0;
+        console.log('Megtámadtad a ' + targetNpc.name + '-t ' + (playerDmg) + ' sebzéssel');
+        (npcDmg >= 0) ? player.hp -= npcDmg : player.hp -= 0;
+        console.log('Megtámadott a ' + targetNpc.name + ' ' + (playerDmg) + ' sebzéssel');
         console.log('--------------------------------------');
       }
       console.log('Jelenlegi életerőd ' + player.hp + ' || ellenfeled hátramaradó életereje ' + targetNpc.hp);
