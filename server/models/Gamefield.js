@@ -5,7 +5,7 @@ const Gamefield = sequelize.define('Gamefield', {
   type: Sequelize.STRING,
   description: Sequelize.STRING,
   far_description: Sequelize.STRING,
-  acces: Sequelize.BOOLEAN
+  default_acces: Sequelize.BOOLEAN
 });
 
 module.exports = Gamefield;
