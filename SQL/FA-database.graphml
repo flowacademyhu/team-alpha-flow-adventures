@@ -96,7 +96,7 @@ defense_modifier<y:LabelModel>
     <node id="n3">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="205.6592082616179" x="17.757458405048766" y="95.27160068846817"/>
+          <y:Geometry height="103.0" width="205.6592082616179" x="17.757458405048766" y="95.27160068846817"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="55.69140625" x="74.98390100580895" y="4.0">contexts</y:NodeLabel>
@@ -239,7 +239,7 @@ author<y:LabelModel>
     <edge id="e0" source="n6" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-35.5" sy="-47.5" tx="-68.55306942053925" ty="45.0">
+          <y:Path sx="-35.5" sy="-47.5" tx="-68.55306942053925" ty="51.5">
             <y:Point x="55.5" y="325.5"/>
             <y:Point x="98.83333333333334" y="325.5"/>
           </y:Path>
@@ -315,7 +315,7 @@ author<y:LabelModel>
     <edge id="e6" source="n5" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="-54.5" tx="0.0" ty="45.0"/>
+          <y:Path sx="0.0" sy="-54.5" tx="0.0" ty="51.5"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="crows_foot_many" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -340,7 +340,7 @@ author<y:LabelModel>
     <edge id="e8" source="n4" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-34.66666666666667" sy="-70.0" tx="68.55306942053926" ty="45.0">
+          <y:Path sx="-34.66666666666667" sy="-70.0" tx="68.55306942053926" ty="51.5">
             <y:Point x="227.33333333333331" y="325.5"/>
             <y:Point x="152.16666666666666" y="325.5"/>
           </y:Path>
