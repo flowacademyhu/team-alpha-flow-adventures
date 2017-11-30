@@ -1,3 +1,21 @@
 .main{
   margin-top: 100px;
 }
+
+button, select, form{
+  margin: 5px;
+}
+
+.action-buttons{
+  width: 119px;
+}
+
+.eastwest{
+  margin: 10px 18px 5px 18px;
+}
+
+.rest-form{
+  margin-top: 10px;
+  padding: 15px;
+  background-color:#e5eeee;
+}

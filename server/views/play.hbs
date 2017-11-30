@@ -1,1 +1,51 @@
 <h1>PLAY SITE</h1>
+<div>
+  {{!-- Upperside of page --}}
+  <div class="row">
+    {{!-- Location and field info display --}}
+    <div class="col-sm-6">
+      <p>{{fieldDesc}}</p>
+      <p>{{northDesc}}</p>
+      <p>{{southDesc}}</p>
+      <p>{{eastDesc}}</p>
+      <p>{{westDesc}}</p>
+    </div>
+    {{!-- Side button display --}}
+    <div class="col-sm-2 text-left">
+      <button class="btn btn-primary btn-block">exit</button>
+      <button class="btn btn-primary btn-block">inventory</button>
+      <button class="btn btn-primary btn-block">character info</button>
+      <button class="btn btn-primary btn-block">place</button>
+    </div>
+  </div>
+  {{!-- Bottom side of page --}}
+  <div class="row">
+    {{!-- Movement buttons --}}
+    <div class="col-sm-3 text-center">
+      <button class="btn btn-primary glyphicon glyphicon-menu-up" ></button>
+      <div>
+      <button class="btn btn-primary glyphicon glyphicon-menu-left eastwest"></button>
+      <button class="btn btn-primary glyphicon glyphicon-menu-right eastwest"></button>
+      </div>
+      <button class="btn btn-primary glyphicon glyphicon-menu-down"></button>
+    </div>
+    {{!-- Bottom button display --}}
+    <div class="col-sm-3">
+      <button class="btn btn-danger action-buttons">attack</button>
+      <button class="btn btn-success action-buttons">talk</button>
+      <button class="btn btn-primary action-buttons">pick up</button>
+      <button class="btn btn-primary action-buttons">equip</button>
+
+      <form class="rest-form" action="">
+      <select name="rest" id="">
+        <option value="">Pihenés értéke</option>        
+        <option value="">Pihen 5 kört</option>
+        <option value="">Pihen 10 kört</option>
+        <option value="">Pihen 15 kört</option>
+      </select>
+      <button class="btn btn-primary" type="submit">Pihenj!</button>
+      </form>
+    </div>
+  </div>
+
+</div>
