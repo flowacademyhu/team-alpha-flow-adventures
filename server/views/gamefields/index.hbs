@@ -1,0 +1,78 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>type</th>
+      <th>description</th>
+      <th>far description</th>
+      <th>access</th>
+      <th>műveletek</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+    {{#each gamefield}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{type}}</td>
+        <td>{{description}}</td>
+        <td>{{far_description}}</td>
+        {{#if access}}
+          <td>accessible</td>
+        {{else}}
+          <td>not accessible</td>
+        {{/if}}
+
+        <td>
+          <a href="/gamefields/{{gamefield.id}}">mutat /</a>
+          <a href="/gamefields/{{id}}/update">módosít</a>
+            <form method="POST" action="/students/{{id}}?_method=DELETE">
+              <button type="submit" class="btn btn-danger">Törlés</button>
+            </form>
+        </td>
+
+      </tr>
+
+    {{/each}}
+
+  </tbody>
+</table>
+
+
+
+<h3>
+<a href="/gamefields/create/">New gamefield</a>
+</h3>
+
+
+
+{{#if endOfArray}}
+<h2>
+  <a href="/gamefields?page={{next}}">Next page</a>
+</h2>
+{{/if}}
+
+
+
+{{#each pages}}
+
+  {{#currentPage this ../page}}
+
+      <span style="font-weight: bold">{{this}} </span>
+    {{else}}
+      <a href="/gamefields?page={{../this}}">{{../this}}</a>
+
+  {{/currentPage}}
+
+{{/each}}
+
+
+
+{{#if aboveOne}}
+<h2>
+  <a href="/gamefields?page={{prev}}">Previous page</a>
+</h2>
+{{/if}}
+

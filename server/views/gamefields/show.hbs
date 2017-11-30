@@ -1,0 +1,30 @@
+<ul>
+  <li>
+  <p>
+      {{gamefields.id}}
+    </p>
+    <p>
+      {{gamefields.type}}
+    </p>
+    <p>
+      {{gamefields.description}}
+    </p>
+    <p>
+      {{gamefields.far_description}}
+    </p>
+      {{#if gamefields.access}}
+        <p>accessible</p>
+      {{else}}
+        <p>not accessible</p>
+      {{/if}}  
+    </p>
+
+    </li>
+    <a href="/gamefields/{{gamefield.id}}/update">Adatok frissítése</a>
+
+    <form method="POST" action="/students/{{gamefield.id}}?_method=DELETE">
+     <button type="submit" class="btn btn-danger">Törlés</button>
+    </form>
+
+    <a href="./">Index</a>
+</ul>
