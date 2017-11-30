@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/sequelize').getInstance();
 
-const Game_area = sequelize.define('Game_area', {
+const GameArea = sequelize.define('Game_area', {
   map_id: Sequelize.INTEGER,
   x_coordinate: Sequelize.INTEGER,
   y_coordinate: Sequelize.INTEGER,
@@ -10,4 +10,4 @@ const Game_area = sequelize.define('Game_area', {
   item_id: Sequelize.INTEGER
 });
 
-module.exports = Game_area;
+module.exports = GameArea;
