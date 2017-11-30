@@ -22,7 +22,7 @@ module.exports = function (npc, matrix) {
         console.log(n + '. kör');
         n++;
         let playerDmg = (player.dmg + playerRandomRoll) - targetNpc.def;
-        let npcDmg = (targetNpc.str + npcRandomRoll) - player.def;
+        let npcDmg = (targetNpc.dmg + npcRandomRoll) - player.def;
 
         (playerDmg >= 0) ? targetNpc.hp -= playerDmg : targetNpc.hp -= 0;
         console.log('Megtámadtad a ' + targetNpc.name + '-t ' + (playerDmg) + ' sebzéssel');
