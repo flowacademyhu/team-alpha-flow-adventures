@@ -19,4 +19,6 @@ router.delete('/npcs/:id', npcsControllers.delete);
 
 router.get('/npcs/count', npcsControllers.count);
 
+router.get('/test', (request, response) => response.json('Valami'));
+
 module.exports = router;
