@@ -2,6 +2,7 @@ const npcsControllers = require('./controllers/npcs');
 
 const express = require('express');
 const router = express.Router();
+const game = require('../bin/game');
 
 router.get('/npcs', npcsControllers.index);
 
@@ -19,6 +20,9 @@ router.delete('/npcs/:id', npcsControllers.delete);
 
 router.get('/npcs/count', npcsControllers.count);
 
-router.get('/test', (request, response) => response.json('Valami'));
+router.post('/games', (request, response) => {
+  let gameObject = game();
+  response.json(gameObject.matrixCurrentPosition);
+});
 
 module.exports = router;

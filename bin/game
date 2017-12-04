@@ -12,16 +12,21 @@ const player = require('../app/models/characters/player');
 const round = require('../lib/round');
 const prologue = require('../lib/prologue');
 
-prologue();
-console.log('Ha az írányításhoz segítségre van szükséged írd be a "segíts" parancsot!');
-let matrix = map();
-while (context.gameState.gameIsRunning && context.gameState.quit) {
-  const input = read.question('>>');
-  const splittedText = input.split(' ');
-  console.log('--------------------------------------');
-  command(splittedText, matrix);
-  if (gameWin(position) === false || playerDead(player.hp) === false) {
-    context.gameState.gameIsRunning = false;
-  }
-  round.counter();
+function game () {
+  // prologue();
+  // console.log('Ha az írányításhoz segítségre van szükséged írd be a "segíts" parancsot!');
+  // let matrix = map();
+  /* while (context.gameState.gameIsRunning && context.gameState.quit) {
+    const input = read.question('>>');
+    const splittedText = input.split(' '); 
+    console.log('--------------------------------------');
+    command(splittedText, matrix);
+    if (gameWin(position) === false || playerDead(player.hp) === false) {
+      context.gameState.gameIsRunning = false;
+    }
+    round.counter();
+  }*/
+
+  return map();
 }
+module.exports = game;

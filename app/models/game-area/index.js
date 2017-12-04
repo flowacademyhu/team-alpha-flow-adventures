@@ -15,6 +15,9 @@ module.exports = function map () {
       n++;
     }
   }
-  matrixCurrentPosition(position[1], position[0], matrix, gameArea);
-  return matrix;
+
+  return {
+    matrixCurrentPosition: matrixCurrentPosition(position[1], position[0], matrix, gameArea),
+    matrix: matrix
+  };
 };

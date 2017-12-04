@@ -33,5 +33,5 @@ module.exports = function (direction, matrix) {
   } else {
     console.log('Erre nem lehet menni.');
   }
-  matrixCurrentPosition(position[1], position[0], matrix, gameArea);
+  return matrixCurrentPosition(position[1], position[0], matrix, gameArea);
 };
