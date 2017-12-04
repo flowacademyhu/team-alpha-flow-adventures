@@ -17,3 +17,10 @@ for (let i = 0; i < directories.length; i++) {
 console.log(vegleges);
 
 module.exports = vegleges;
+
+/* 'use strict';
+const Item = require('../../../server/models/Item');
+
+let items = Item.findAll();
+
+module.exports = items; */
