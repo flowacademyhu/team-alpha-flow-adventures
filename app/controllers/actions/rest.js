@@ -1,7 +1,7 @@
 'use strict';
 
 const player = require('../../models/characters/player');
-const round = require('../../../lib/round');
+const gameRound = require('../../../lib/game-round');
 
 module.exports = function (inValue) {
   let value = parseInt(inValue);
@@ -28,7 +28,7 @@ module.exports = function (inValue) {
       player.hp += value;
       console.log(value + '-t gyógyultál. A jelenlegi életerőd: ', player.hp);
       for (let i = 1; i < value; i++) {
-        round.counter();
+        gameRound.counter();
       }
     }
   }

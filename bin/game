@@ -9,7 +9,7 @@ const command = require('../lib/command');
 const context = require('../app/models/game-state');
 const playerDead = require('../lib/player-dead');
 const player = require('../app/models/characters/player');
-const round = require('../lib/round');
+const gameRound = require('../lib/game-round');
 const prologue = require('../lib/prologue');
 
 function game () {
@@ -24,7 +24,7 @@ function game () {
     if (gameWin(position) === false || playerDead(player.hp) === false) {
       context.gameState.gameIsRunning = false;
     }
-    round.counter();
+    gameRound.counter();
   }*/
 
   return map();
