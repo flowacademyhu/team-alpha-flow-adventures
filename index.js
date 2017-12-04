@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const sequelize = require('./server/services/sequelize');
-const Context = require('./server/models/context');
+//const Context = require('./server/models/context');
 
 const router = require('./server/routes');
 
