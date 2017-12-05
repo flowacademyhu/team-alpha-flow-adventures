@@ -28,12 +28,22 @@ router.post('/games', (request, response) => {
 });
 
 router.put('/games/movements/north', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('észak', gameObject.matrix);
+  gameObject.matrixCurrentPosition = movement('north', gameObject.matrix);
+  response.json(gameObject.matrixCurrentPosition);
+});
+
+router.put('/games/movements/east', (request, response) => {
+  gameObject.matrixCurrentPosition = movement('east', gameObject.matrix);
+  response.json(gameObject.matrixCurrentPosition);
+});
+
+router.put('/games/movements/west', (request, response) => {
+  gameObject.matrixCurrentPosition = movement('west', gameObject.matrix);
   response.json(gameObject.matrixCurrentPosition);
 });
 
 router.put('/games/movements/south', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('dél', gameObject.matrix);
+  gameObject.matrixCurrentPosition = movement('south', gameObject.matrix);
   response.json(gameObject.matrixCurrentPosition);
 });
 

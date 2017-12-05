@@ -9,16 +9,16 @@ module.exports = function (direction, matrix) {
   let coordTwo = position[0];
 
   switch (direction) {
-    case 'kelet':
+    case 'east':
       coordTwo++;
       break;
-    case 'nyugat':
+    case 'west':
       coordTwo--;
       break;
-    case 'észak':
+    case 'north':
       coordOne--;
       break;
-    case 'dél':
+    case 'south':
       coordOne++;
       break;
     default:
