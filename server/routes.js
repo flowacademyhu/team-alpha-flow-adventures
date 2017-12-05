@@ -3,6 +3,8 @@ const npcsControllers = require('./controllers/npcs');
 const express = require('express');
 const router = express.Router();
 const game = require('../bin/game');
+const movement = require('../app/controllers/actions/movement');
+let gameObject;
 
 router.get('/npcs', npcsControllers.index);
 
@@ -21,7 +23,17 @@ router.delete('/npcs/:id', npcsControllers.delete);
 router.get('/npcs/count', npcsControllers.count);
 
 router.post('/games', (request, response) => {
-  let gameObject = game();
+  gameObject = game();
+  response.json(gameObject.matrixCurrentPosition);
+});
+
+router.put('/games/movements/north', (request, response) => {
+  gameObject.matrixCurrentPosition = movement('észak', gameObject.matrix);
+  response.json(gameObject.matrixCurrentPosition);
+});
+
+router.put('/games/movements/south', (request, response) => {
+  gameObject.matrixCurrentPosition = movement('dél', gameObject.matrix);
   response.json(gameObject.matrixCurrentPosition);
 });
 
