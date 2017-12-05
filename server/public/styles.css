@@ -23,3 +23,8 @@ button, select, form{
 .warning{
   color: red;
 }
+
+.friendly-npc{
+  color: green;
+  font-weight: bold;
+}
