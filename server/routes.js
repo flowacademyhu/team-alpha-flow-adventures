@@ -24,27 +24,28 @@ router.get('/npcs/count', npcsControllers.count);
 
 router.post('/games', (request, response) => {
   gameObject = game();
-  response.json(gameObject.matrixCurrentPosition);
+  gameObject.warning = '';
+  response.json(gameObject);
 });
 
 router.put('/games/movements/north', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('north', gameObject.matrix);
-  response.json(gameObject.matrixCurrentPosition);
+  movement('north', gameObject);
+  response.json(gameObject);
 });
 
 router.put('/games/movements/east', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('east', gameObject.matrix);
-  response.json(gameObject.matrixCurrentPosition);
+  movement('east', gameObject);
+  response.json(gameObject);
 });
 
 router.put('/games/movements/west', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('west', gameObject.matrix);
-  response.json(gameObject.matrixCurrentPosition);
+  movement('west', gameObject);
+  response.json(gameObject);
 });
 
 router.put('/games/movements/south', (request, response) => {
-  gameObject.matrixCurrentPosition = movement('south', gameObject.matrix);
-  response.json(gameObject.matrixCurrentPosition);
+  movement('south', gameObject);
+  response.json(gameObject);
 });
 
 module.exports = router;

@@ -19,3 +19,7 @@ button, select, form{
   padding: 15px;
   background-color:#e5eeee;
 }
+
+.warning{
+  color: red;
+}

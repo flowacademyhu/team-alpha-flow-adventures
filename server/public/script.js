@@ -6,6 +6,8 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 
+let warningMessage = document.querySelector('.warning');
+
 let currentFieldDescription = document.querySelector('.field-desc');
 let northDescription = document.querySelector('.north-desc');
 let westDescription = document.querySelector('.west-desc');
@@ -17,12 +19,19 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
-function currentLocationDisplay (currentGameField) {
-  currentFieldDescription.innerHTML = currentGameField.fieldDesc;
-  northDescription.innerHTML = currentGameField.northDesc;
-  southDescription.innerHTML = currentGameField.southDesc;
-  eastDescription.innerHTML = currentGameField.eastDesc;
-  westDescription.innerHTML = currentGameField.westDesc;
+function currentLocationDisplay (gameObject) {
+  console.log(gameObject);
+  warningMessage.innerHTML = gameObject.warning;
+  currentFieldDescription.innerHTML = gameObject.matrixCurrentPosition
+    .fieldDesc;
+  northDescription.innerHTML = gameObject.matrixCurrentPosition
+    .northDesc;
+  southDescription.innerHTML = gameObject.matrixCurrentPosition
+    .southDesc;
+  eastDescription.innerHTML = gameObject.matrixCurrentPosition
+    .eastDesc;
+  westDescription.innerHTML = gameObject.matrixCurrentPosition
+    .westDesc;
 }
 
 function newGame () {
