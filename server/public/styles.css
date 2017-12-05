@@ -24,7 +24,18 @@ button, select, form{
   color: red;
 }
 
+.interactables{
+  font-weight: bold
+}
+
 .friendly-npc{
   color: green;
-  font-weight: bold;
+}
+
+.hostile-npc{
+  color: red;
+}
+
+.useable-items{
+  color: yellow;
 }
