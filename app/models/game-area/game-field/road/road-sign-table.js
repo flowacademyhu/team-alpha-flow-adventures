@@ -3,7 +3,8 @@
 const signTable = require('../../../characters/npc/friendly/sign-table');
 
 module.exports = {
-  desc: 'Egy poros úton állsz. Előtted egy kopott ' + '\x1b[33m' + 'tábla' + '\x1b[0m' + '.',
+  desc: 'Egy poros úton állsz. Előtted egy kopott ' +
+  '<span class="useable-items"> tábla </span>.',
   shortDesc: 'látsz egy utat. Az úton egy távoli tábla áll magányosan.',
   deadNpcDesc: null,
   npc: signTable,
