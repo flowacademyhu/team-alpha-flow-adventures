@@ -47,7 +47,7 @@ function moveWest () {
 }
 
 function moveEast () {
-  return ('/games/movements/east', {method: 'PUT'})
+  return fetch('/games/movements/east', {method: 'PUT'})
   .then(response => response.json())
   .then(data => currentLocationDisplay(data))
   .catch(error => console.log(error));
