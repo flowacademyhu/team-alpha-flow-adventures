@@ -2,34 +2,75 @@
 
 const player = require('../../models/characters/player');
 const gameRound = require('../../../lib/game-round');
+const output = require('../../views/output');
+const playerMaxHealth = 30;
 
-module.exports = function (inValue) {
-  let value = parseInt(inValue);
-  let wrongValue;
-  if (isNaN(value)) {
-    console.log('Add meg egy számmal, hogy mennyit szeretnél gyógyulni.');
-    wrongValue = true;
-  } else if (value < 0) {
-    console.log('Naaaa, nem bánthatod magad csak úgy.');
-    wrongValue = true;
-  } else if (value === 0) {
-    console.log('Ennek te sem látod értelmét remélem.');
-    wrongValue = true;
-  }
-  if (player.hp <= 30 && wrongValue !== true) {
-    if (player.hp + value > 30) {
-      console.log('Nem tudsz a maximális életerő (30) fölé gyógyulni.');
-      if (30 - player.hp === 0) {
-        console.log('Teljesen egészséges vagy.');
-      } else {
-        console.log('Ahhoz, hogy teljesen egészséges legyél ' + (30 - player.hp) + '-t kell gyógyulnod.');
-      }
+class Rest {
+  wrongValue () {
+    if (isNaN(this.value)) {
+      output('Add meg egy számmal, hogy mennyit szeretnél gyógyulni.');
+      return true;
     } else {
-      player.hp += value;
-      console.log(value + '-t gyógyultál. A jelenlegi életerőd: ', player.hp);
-      for (let i = 1; i < value; i++) {
-        gameRound.counter();
-      }
+      this.valueIsNegative();
     }
   }
-};
+
+  valueIsNegative () {
+    if (this.value < 0) {
+      output('Naaaa, nem bánthatod magad csak úgy.');
+      return true;
+    } else {
+      this.valueIsNull();
+    }
+  }
+
+  valueIsNull () {
+    if (this.value === 0) {
+      output('Ennek te sem látod értelmét remélem.');
+      return true;
+    }
+  }
+
+  playerIsHealthy () {
+    if (player.hp === playerMaxHealth) {
+      output('Teljesen egészséges vagy.');
+    } else {
+      output(`Ahhoz, hogy teljesen egészséges legyél (${playerMaxHealth - player.hp})-t kell gyógyulnod.`);
+    }
+  }
+
+  isRestable () {
+    return player.hp <= playerMaxHealth && !this.wrongValue();
+  }
+
+  isOverHealed () {
+    return player.hp + this.value > playerMaxHealth;
+  }
+
+  tryToHeal () {
+    if (this.isOverHealed()) {
+      output(`Nem tudsz a maximális életerő (${playerMaxHealth}) fölé gyógyulni.`);
+      this.playerIsHealthy();
+    } else {
+      this.healing();
+    }
+  }
+
+  healing () {
+    player.hp += this.value;
+    output(this.value + '-t gyógyultál. A jelenlegi életerőd: ', player.hp);
+    for (let i = 1; i < this.value; i++) {
+      gameRound.counter();
+    }
+  }
+
+  run (inValue) {
+    this.value = parseInt(inValue);
+    if (this.isRestable()) {
+      this.tryToHeal();
+    }
+  }
+}
+
+let restInstance = new Rest();
+module.exports = restInstance.run;
