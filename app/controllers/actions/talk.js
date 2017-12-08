@@ -2,20 +2,30 @@
 
 const gameArea = require('../../models/game-area/game-field/index');
 const position = require('../../models/game-area/starter-position');
+const output = require('../../views/output');
 
-module.exports = function (npc, matrix) {
-  let targetNpc = gameArea[matrix[position[1]][position[0]]].npc;
-  if (gameArea[matrix[position[1]][position[0]]].npc !== null) {
-    if (gameArea[matrix[position[1]][position[0]]].npc.name === npc) {
-      if (targetNpc.hp > 0) {
-        console.log(gameArea[matrix[position[1]][position[0]]].npc.text);
-      } else {
-        console.log('A halottak nem beszélnek... Ebben a játékban.');
-      }
-    } else {
-      console.log('Kihez beszélsz?');
-    }
-  } else {
-    console.log('Nincs itt senki.');
+class Talk {
+  run (npc, matrix) {
+    this._npc = gameArea[matrix[position[1]][position[0]]].npc;
+    this._npcName = npc;
+    if (this._noOneIsHere()) return output('Nincs itt senki.');
+    if (this._wrongTarget()) return output('Kihez beszélsz?');
+    if (this._targetIsDead()) return output('A halottak nem beszélnek... Ebben a játékban.');
+    output(this._npc.text);
   }
-};
+
+  _noOneIsHere () {
+    return this._npc == null;
+  }
+
+  _wrongTarget () {
+    return this._npc.name !== this._npcName;
+  }
+
+  _targetIsDead () {
+    return this._npc.hp <= 0;
+  }
+}
+
+let talkInstance = new Talk();
+module.exports = talkInstance.run;
