@@ -22,15 +22,15 @@ let southMovement = document.querySelector('.move-south');
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   warningMessage.innerHTML = gameObject.warning;
-  currentFieldDescription.innerHTML = gameObject.matrixCurrentPosition
+  currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
-  northDescription.innerHTML = gameObject.matrixCurrentPosition
+  northDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .northDesc;
-  southDescription.innerHTML = gameObject.matrixCurrentPosition
+  southDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .southDesc;
-  eastDescription.innerHTML = gameObject.matrixCurrentPosition
+  eastDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .eastDesc;
-  westDescription.innerHTML = gameObject.matrixCurrentPosition
+  westDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .westDesc;
 }
 

@@ -24,7 +24,6 @@ router.get('/npcs/count', npcsControllers.count);
 
 router.post('/games', (request, response) => {
   gameObject = game();
-  gameObject.warning = '';
   response.json(gameObject);
 });
 

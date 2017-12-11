@@ -23,15 +23,15 @@ module.exports = function (direction, gameObject) {
       break;
   }
 
-  if (typeof gameObject.matrix[coordTwo] === 'object' &&
-      typeof gameObject.matrix[coordOne] === 'object' &&
-      gameArea[gameObject.matrix[coordOne][coordTwo]].accessible) {
+  if (typeof gameObject.map.matrix[coordTwo] === 'object' &&
+      typeof gameObject.map.matrix[coordOne] === 'object' &&
+      gameArea[gameObject.map.matrix[coordOne][coordTwo]].accessible) {
     position[0] = coordTwo;
     position[1] = coordOne;
     gameObject.warning = '';
   } else {
     gameObject.warning = 'Erre nem lehet menni.';
   }
-  gameObject.matrixCurrentPosition = matrixCurrentPosition(position[1], position[0], gameObject.matrix, gameArea);
+  gameObject.map.matrixCurrentPosition = matrixCurrentPosition(position[1], position[0], gameObject.map.matrix, gameArea);
   return gameObject;
 };
