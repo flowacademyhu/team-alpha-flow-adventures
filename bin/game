@@ -11,6 +11,7 @@ const playerDead = require('../lib/player-dead');
 const player = require('../app/models/characters/player');
 const round = require('../lib/round');
 const prologue = require('../lib/prologue');
+const ContextModel = require('../app/models/context');
 
 function game () {
   // prologue();
@@ -27,6 +28,6 @@ function game () {
     round.counter();
   }*/
 
-  return map();
+  return new ContextModel();
 }
 module.exports = game;
