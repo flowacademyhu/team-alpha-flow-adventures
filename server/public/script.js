@@ -7,6 +7,9 @@ let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 
 let warningMessage = document.querySelector('.warning');
+let playerHealthDisplay = document.querySelector('.player-health-display');
+let playerDamageDisplay = document.querySelector('.player-attack-display');
+let playerDefenseDisplay = document.querySelector('.player-defense-display');
 
 let currentFieldDescription = document.querySelector('.field-desc');
 let northDescription = document.querySelector('.north-desc');
@@ -21,6 +24,9 @@ let southMovement = document.querySelector('.move-south');
 
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
+  playerHealthDisplay.innerHTML = gameObject.player.hp;
+  playerDamageDisplay.innerHTML = gameObject.player.dmg;
+  playerDefenseDisplay.innerHTML = gameObject.player.def;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
