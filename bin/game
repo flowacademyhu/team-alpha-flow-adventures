@@ -19,14 +19,14 @@ function game () {
   // let matrix = map();
   /* while (context.gameState.gameIsRunning && context.gameState.quit) {
     const input = read.question('>>');
-    const splittedText = input.split(' '); 
+    const splittedText = input.split(' ');
     console.log('--------------------------------------');
     command(splittedText, matrix);
     if (gameWin(position) === false || playerDead(player.hp) === false) {
       context.gameState.gameIsRunning = false;
     }
     round.counter();
-  }*/
+  } */
 
   return new ContextModel();
 }
