@@ -5,6 +5,7 @@ let moveNorthButton = document.querySelector('.move-north');
 let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
+let talkButton = document.querySelector('.talk');
 
 let warningMessage = document.querySelector('.warning');
 
@@ -19,8 +20,14 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
+let talkMessage = document.querySelector('.talk-message');
+
+function talkWithNpc (gameObject) {
+  talkMessage.innerHTML = gameObject;
+}
+
 function currentLocationDisplay (gameObject) {
-  console.log(gameObject);
+  talkMessage.innerHTML = '';
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
@@ -69,8 +76,16 @@ function moveSouth () {
     .catch(error => console.log(error));
 }
 
+function talk () {
+  return fetch('/games/talk', {method: 'POST'})
+    .then(response => response.json())
+    .then(data => talkWithNpc(data))
+    .catch(error => console.log(error));
+}
+
 newGameButton.addEventListener('click', newGame);
 moveNorthButton.addEventListener('click', moveNorth);
 moveWestButton.addEventListener('click', moveWest);
 moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
+talkButton.addEventListener('click', talk);
