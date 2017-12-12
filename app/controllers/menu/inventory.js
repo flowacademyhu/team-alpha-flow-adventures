@@ -1,8 +1,9 @@
 'use strict';
 const player = require('../../models/characters/player');
+const testItem = require('../../models/items/weapons/axe');
 
 let inventory = {
-  activeItems: [],
+  activeItems: [testItem],
   inactiveItems: []
 };
 function statIncrease () {
