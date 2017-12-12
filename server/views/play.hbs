@@ -1,27 +1,27 @@
 <div>
   {{!-- Upperside of page --}}
-  <div class="row">
+  <div class="row upper-text-display">
     {{!-- Location and field info display --}}
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <p class="warning"></p>
       <p class="field-desc"></p>
       <p class="north-desc"></p>
       <p class="south-desc"></p>
       <p class="east-desc"></p>
       <p class="west-desc"></p>
+      <p class="talk-message"></p>
     </div>
     {{!-- Side button display --}}
     <div class="col-sm-2 text-left">
-      <button class="btn btn-primary btn-block new-game">Új játék</button>
-      <button class="btn btn-primary btn-block">Hátizsák</button>
-      <button class="btn btn-primary btn-block">Karakter adatok</button>
-      <button class="btn btn-primary btn-block">Iránytű</button>
+      <p >Életerő: <span class="player-health-display"></span></p>
+      <p>Támadás: <span class="player-attack-display"></span></p>
+      <p>Védelem: <span class="player-defense-display"></span> </p>
     </div>
   </div>
   {{!-- Bottom side of page --}}
   <div class="row">
     {{!-- Movement buttons --}}
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-2 text-center">
       <button class="btn btn-primary glyphicon glyphicon-menu-up move-north" ></button>
       <div>
       <button class="btn btn-primary glyphicon glyphicon-menu-left eastwest move-west"></button>
@@ -32,7 +32,7 @@
     {{!-- Bottom button display --}}
     <div class="col-sm-3">
       <button class="btn btn-danger action-buttons">Támadás</button>
-      <button class="btn btn-success action-buttons">Beszéd</button>
+      <button class="btn btn-success action-buttons talk">Beszéd</button>
       <button class="btn btn-primary action-buttons">Felvesz</button>
       <button class="btn btn-primary action-buttons">Használ</button>
 
@@ -46,10 +46,11 @@
       <button class="btn btn-primary" type="submit">Pihenj!</button>
       </form>
     </div>
-    <div class="col-sm-3">
-      <p>Életerő: <span class="player-health-display"></span></p>
-      <p>Támadás: <span class="player-attack-display"></span></p>
-      <p>Védelem: <span class="player-defense-display"></span> </p>
+    <div class="col-sm-2">
+      <button class="btn btn-primary btn-block new-game">Új játék</button>
+      <button class="btn btn-primary btn-block">Hátizsák</button>
+      <button class="btn btn-primary btn-block">Karakter adatok</button>
+      <button class="btn btn-primary btn-block">Iránytű</button>
     </div>
   </div>
 
