@@ -39,3 +39,7 @@ button, select, form{
 .useable-items{
   color: rgb(255, 217, 0);
 }
+
+.upper-text-display{
+  min-height: 180px;
+}
