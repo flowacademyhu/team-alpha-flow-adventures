@@ -27,7 +27,7 @@ module.exports = function (gameObject) {
       console.log('--------------------------------------');
     }
     if (targetNpc.items !== null && targetNpc.hp <= 0) {
-      return 'A(z) ' + targetNpc.name + ' meghalt. Elejtette a(z) ' + '\x1b[33m' + targetNpc.items.name + '\x1b[0m' + '-t';
+      return 'A(z) ' + targetNpc.name + ' meghalt. Elejtette a(z) <span class="useable-items interactables">' + targetNpc.items.name + '</span>-t';
     }
     return 'Jelenlegi életerőd ' + gameObject.player.hp + ' || ellenfeled hátramaradó életereje ' + targetNpc.hp;
   }
