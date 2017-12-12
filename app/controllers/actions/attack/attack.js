@@ -1,6 +1,5 @@
 'use strict';
 
-const player = require('../../../models/characters/player');
 const random = require('./random/random');
 
 module.exports = function (gameObject) {
