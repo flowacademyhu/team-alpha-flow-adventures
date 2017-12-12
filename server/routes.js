@@ -5,6 +5,7 @@ const router = express.Router();
 const game = require('../bin/game');
 const movement = require('../app/controllers/actions/movement');
 const talk = require('../app/controllers/actions/talk');
+const attack = require('../app/controllers/actions/attack/attack');
 let gameObject;
 
 router.get('/npcs', npcsControllers.index);
@@ -50,6 +51,10 @@ router.put('/games/movements/south', (request, response) => {
 
 router.post('/games/talk', (request, response) => {
   response.json(talk(gameObject));
+});
+
+router.post('/games/attack', (request, response) => {
+  response.json(attack(gameObject));
 });
 
 module.exports = router;

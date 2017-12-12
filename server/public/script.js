@@ -23,10 +23,17 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
-let talkMessage = document.querySelector('.talk-message');
+let talkMessage = document.querySelector('.other-message');
+let attackMessage = document.querySelector('.other-message');
+
+let attackButton = document.querySelector('.attack');
 
 function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
+}
+
+function attackNpc (gameObject) {
+  attackMessage.innerHTML = gameObject;
 }
 
 function currentLocationDisplay (gameObject) {
@@ -90,9 +97,17 @@ function talk () {
     .catch(error => console.log(error));
 }
 
+function attack () {
+  return fetch('/games/attack', {method: 'POST'})
+  .then(response => response.json())
+  .then(data => attackNpc(data))
+  .catch(error => console.log(error));
+}
+
 newGameButton.addEventListener('click', newGame);
 moveNorthButton.addEventListener('click', moveNorth);
 moveWestButton.addEventListener('click', moveWest);
 moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
 talkButton.addEventListener('click', talk);
+attackButton.addEventListener('click', attack);
