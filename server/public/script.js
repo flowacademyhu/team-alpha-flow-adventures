@@ -12,6 +12,8 @@ let playerHealthDisplay = document.querySelector('.player-health-display');
 let playerDamageDisplay = document.querySelector('.player-attack-display');
 let playerDefenseDisplay = document.querySelector('.player-defense-display');
 
+let playerUsedItemDisplay = document.querySelector('.player-used-item-display');
+
 let currentFieldDescription = document.querySelector('.field-desc');
 let northDescription = document.querySelector('.north-desc');
 let westDescription = document.querySelector('.west-desc');
@@ -42,6 +44,7 @@ function currentLocationDisplay (gameObject) {
   playerHealthDisplay.innerHTML = gameObject.player.hp;
   playerDamageDisplay.innerHTML = gameObject.player.dmg;
   playerDefenseDisplay.innerHTML = gameObject.player.def;
+  playerUsedItemDisplay.innerHTML = gameObject.inventory[0].name;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
