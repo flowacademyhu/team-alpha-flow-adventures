@@ -6,6 +6,7 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 let talkButton = document.querySelector('.talk');
+let pickupButton = document.querySelector('.pickup');
 
 let warningMessage = document.querySelector('.warning');
 let playerHealthDisplay = document.querySelector('.player-health-display');
@@ -27,6 +28,7 @@ let southMovement = document.querySelector('.move-south');
 
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
+let pickupMessage = document.querySelector('.other-message');
 
 let attackButton = document.querySelector('.attack');
 
@@ -38,13 +40,17 @@ function attackNpc (gameObject) {
   attackMessage.innerHTML = gameObject;
 }
 
+function pickupItem (gameObject) {
+  pickupMessage.innerHTML = gameObject.itemMessage;
+}
+
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   talkMessage.innerHTML = '';
   playerHealthDisplay.innerHTML = gameObject.player.hp;
   playerDamageDisplay.innerHTML = gameObject.player.dmg;
   playerDefenseDisplay.innerHTML = gameObject.player.def;
-  playerUsedItemDisplay.innerHTML = gameObject.inventory[0].name;
+  playerUsedItemDisplay.innerHTML = gameObject.inventory.activeItems[0].name;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
@@ -107,6 +113,14 @@ function attack () {
   .catch(error => console.log(error));
 }
 
+function pickup () {
+  // console.log('pickup');
+  return fetch('/games/pickup', {method: 'POST'})
+  .then(response => response.json())
+  .then(data => pickupItem(data))
+  .catch(error => console.log(error));
+}
+
 newGameButton.addEventListener('click', newGame);
 moveNorthButton.addEventListener('click', moveNorth);
 moveWestButton.addEventListener('click', moveWest);
@@ -114,3 +128,4 @@ moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
 talkButton.addEventListener('click', talk);
 attackButton.addEventListener('click', attack);
+pickupButton.addEventListener('click', pickup);

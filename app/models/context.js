@@ -7,7 +7,7 @@ const inventory = require('../controllers/menu/inventory');
 class Context {
   constructor () {
     this.map = map();
-    this.inventory = inventory.inventory.activeItems;
+    this.inventory = inventory.inventory;
     this.player = new Player('Kozsó', 30, 10, 5);
     this.warning = '';
   }

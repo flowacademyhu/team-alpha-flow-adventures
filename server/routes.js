@@ -6,6 +6,7 @@ const game = require('../bin/game');
 const movement = require('../app/controllers/actions/movement');
 const talk = require('../app/controllers/actions/talk');
 const attack = require('../app/controllers/actions/attack/attack');
+const pickup = require('../app/controllers/actions/inventory-controll/pick-up');
 let gameObject;
 
 router.get('/npcs', npcsControllers.index);
@@ -55,6 +56,10 @@ router.post('/games/talk', (request, response) => {
 
 router.post('/games/attack', (request, response) => {
   response.json(attack(gameObject));
+});
+
+router.post('/games/pickup', (request, response) => {
+  response.json(pickup(gameObject));
 });
 
 module.exports = router;
