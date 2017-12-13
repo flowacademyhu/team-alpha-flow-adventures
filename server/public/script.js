@@ -10,10 +10,13 @@ let restButton = document.querySelector('.rest-submit');
 let restSelect = document.querySelector('.rest-dropdown');
 let restForm = document.querySelector('.rest-form');
 
+let otherMessage = document.querySelector('.other-message');
 let warningMessage = document.querySelector('.warning');
 let playerHealthDisplay = document.querySelector('.player-health-display');
 let playerDamageDisplay = document.querySelector('.player-attack-display');
 let playerDefenseDisplay = document.querySelector('.player-defense-display');
+
+let playerUsedItemDisplay = document.querySelector('.player-used-item-display');
 
 let currentFieldDescription = document.querySelector('.field-desc');
 let northDescription = document.querySelector('.north-desc');
@@ -26,19 +29,32 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
-let talkMessage = document.querySelector('.talk-message');
 let selectedRestValue;
+let talkMessage = document.querySelector('.other-message');
+let attackMessage = document.querySelector('.other-message');
+
+let attackButton = document.querySelector('.attack');
 
 function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
 }
 
+function attackNpc (gameObject) {
+  attackMessage.innerHTML = gameObject;
+}
+
+function playerRest (gameObject) {
+  otherMessage.innerHTML = gameObject.otherMessage;
+}
+
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   talkMessage.innerHTML = '';
+  otherMessage.innerHTML = '';
   playerHealthDisplay.innerHTML = gameObject.player.hp;
   playerDamageDisplay.innerHTML = gameObject.player.dmg;
   playerDefenseDisplay.innerHTML = gameObject.player.def;
+  playerUsedItemDisplay.innerHTML = gameObject.inventory[0].name;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
@@ -106,9 +122,15 @@ function rest () {
     body: ('json', JSON.stringify(payload))
   })
   .then(function (res) { return res.json(); })
-  .then(function (data) {
-    alert(JSON.stringify(data));
-  });
+  .then(data => playerRest(data, selectedRestValue))
+  .catch(err => console.log(err));
+}
+
+function attack () {
+  return fetch('/games/attack', {method: 'POST'})
+  .then(response => response.json())
+  .then(data => attackNpc(data))
+  .catch(error => console.log(error));
 }
 
 newGameButton.addEventListener('click', newGame);
@@ -120,7 +142,10 @@ talkButton.addEventListener('click', talk);
 restSelect.addEventListener('change', function () {
   selectedRestValue = this.value;
 });
+
 restForm.addEventListener('submit', function (event) {
   event.preventDefault();
   rest();
 });
+
+attackButton.addEventListener('click', attack);

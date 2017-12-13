@@ -6,6 +6,7 @@ const game = require('../bin/game');
 const movement = require('../app/controllers/actions/movement');
 const talk = require('../app/controllers/actions/talk');
 let rest = require('../app/controllers/actions/rest');
+const attack = require('../app/controllers/actions/attack/attack');
 let gameObject;
 
 router.get('/npcs', npcsControllers.index);
@@ -54,7 +55,10 @@ router.post('/games/talk', (request, response) => {
 });
 
 router.post('/games/rest', (request, response) => {
-  response.json(rest(gameObject, request.body.value));
+  response.json(rest(gameObject, request.body.restedRoundNumber));
+});
+router.post('/games/attack', (request, response) => {
+  response.json(attack(gameObject));
 });
 
 module.exports = router;

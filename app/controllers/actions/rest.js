@@ -7,11 +7,18 @@ module.exports = function (gameObject, inValue) {
 
   let restedRounds = parseInt(inValue);
 
-  if (player.hp === maxPlayerHp) return 'Így is teljesen egészséges vagy.';
-  if (player.hp + restedRounds > maxPlayerHp) return `Nem gyógyulhatsz maximális életerő ${maxPlayerHp} fölé.`;
+  if (player.hp === maxPlayerHp) {
+    gameObject.otherMessage = 'Így is teljesen egészséges vagy.';
+    return gameObject;
+  }
+  if (player.hp + restedRounds > maxPlayerHp) {
+    gameObject.otherMessage = `Nem gyógyulhatsz maximális életerő ${maxPlayerHp} fölé.`;
+    return gameObject;
+  }
   player.hp += restedRounds;
   for (let i = 0; i < restedRounds; i++) {
     round.counter();
   }
-  return `Gyógyultál ${restedRounds} életerőt`;
+  gameObject.otherMessage = `Gyógyultál ${restedRounds} életerőt`;
+  return gameObject;
 };
