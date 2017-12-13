@@ -34,16 +34,21 @@ function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
 }
 
+function statRefresh (gameObject) {
+  playerHealthDisplay.innerHTML = gameObject.player.hp;
+  playerDamageDisplay.innerHTML = gameObject.player.dmg;
+  playerDefenseDisplay.innerHTML = gameObject.player.def;
+}
+
 function attackNpc (gameObject) {
-  attackMessage.innerHTML = gameObject;
+  attackMessage.innerHTML = gameObject.attackMessage;
+  statRefresh(gameObject);
 }
 
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   talkMessage.innerHTML = '';
-  playerHealthDisplay.innerHTML = gameObject.player.hp;
-  playerDamageDisplay.innerHTML = gameObject.player.dmg;
-  playerDefenseDisplay.innerHTML = gameObject.player.def;
+  statRefresh(gameObject);
   playerUsedItemDisplay.innerHTML = gameObject.inventory[0].name;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
