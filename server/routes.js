@@ -5,6 +5,7 @@ const router = express.Router();
 const game = require('../bin/game');
 const movement = require('../app/controllers/actions/movement');
 const talk = require('../app/controllers/actions/talk');
+let rest = require('../app/controllers/actions/rest');
 const attack = require('../app/controllers/actions/attack/attack');
 const pickup = require('../app/controllers/actions/inventory-controll/pick-up');
 let gameObject;
@@ -54,6 +55,9 @@ router.post('/games/talk', (request, response) => {
   response.json(talk(gameObject));
 });
 
+router.post('/games/rest', (request, response) => {
+  response.json(rest(gameObject, request.body.restedRoundNumber));
+});
 router.post('/games/attack', (request, response) => {
   response.json(attack(gameObject));
 });

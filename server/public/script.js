@@ -6,8 +6,14 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 let talkButton = document.querySelector('.talk');
+
 let pickupButton = document.querySelector('.pickup');
 
+let restButton = document.querySelector('.rest-submit');
+let restSelect = document.querySelector('.rest-dropdown');
+let restForm = document.querySelector('.rest-form');
+
+let otherMessage = document.querySelector('.other-message');
 let warningMessage = document.querySelector('.warning');
 let playerHealthDisplay = document.querySelector('.player-health-display');
 let playerDamageDisplay = document.querySelector('.player-attack-display');
@@ -26,6 +32,7 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
+let selectedRestValue;
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
 let pickupMessage = document.querySelector('.other-message');
@@ -36,8 +43,20 @@ function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
 }
 
+function statRefresh (gameObject) {
+  playerHealthDisplay.innerHTML = gameObject.player.hp;
+  playerDamageDisplay.innerHTML = gameObject.player.dmg;
+  playerDefenseDisplay.innerHTML = gameObject.player.def;
+}
+
 function attackNpc (gameObject) {
-  attackMessage.innerHTML = gameObject;
+  attackMessage.innerHTML = gameObject.attackMessage;
+  statRefresh(gameObject);
+}
+
+function playerRest (gameObject) {
+  otherMessage.innerHTML = gameObject.otherMessage;
+  statRefresh(gameObject);
 }
 
 function pickupItem (gameObject) {
@@ -47,10 +66,9 @@ function pickupItem (gameObject) {
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   talkMessage.innerHTML = '';
-  playerHealthDisplay.innerHTML = gameObject.player.hp;
-  playerDamageDisplay.innerHTML = gameObject.player.dmg;
-  playerDefenseDisplay.innerHTML = gameObject.player.def;
   playerUsedItemDisplay.innerHTML = gameObject.inventory.activeItems[0].name;
+  otherMessage.innerHTML = '';
+  statRefresh(gameObject);
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
@@ -106,6 +124,22 @@ function talk () {
     .catch(error => console.log(error));
 }
 
+function rest () {
+  let payload = {restedRoundNumber: selectedRestValue};
+
+  fetch('/games/rest', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: ('json', JSON.stringify(payload))
+  })
+  .then(function (res) { return res.json(); })
+  .then(data => playerRest(data, selectedRestValue))
+  .catch(err => console.log(err));
+}
+
 function attack () {
   return fetch('/games/attack', {method: 'POST'})
   .then(response => response.json())
@@ -127,5 +161,14 @@ moveWestButton.addEventListener('click', moveWest);
 moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
 talkButton.addEventListener('click', talk);
+restSelect.addEventListener('change', function () {
+  selectedRestValue = this.value;
+});
+
+restForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  rest();
+});
+
 attackButton.addEventListener('click', attack);
 pickupButton.addEventListener('click', pickup);
