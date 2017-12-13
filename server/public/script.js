@@ -6,6 +6,9 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 let talkButton = document.querySelector('.talk');
+
+let pickupButton = document.querySelector('.pickup');
+
 let restButton = document.querySelector('.rest-submit');
 let restSelect = document.querySelector('.rest-dropdown');
 let restForm = document.querySelector('.rest-form');
@@ -32,6 +35,7 @@ let southMovement = document.querySelector('.move-south');
 let selectedRestValue;
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
+let pickupMessage = document.querySelector('.other-message');
 
 let attackButton = document.querySelector('.attack');
 
@@ -55,12 +59,16 @@ function playerRest (gameObject) {
   statRefresh(gameObject);
 }
 
+function pickupItem (gameObject) {
+  pickupMessage.innerHTML = gameObject.itemMessage;
+}
+
 function currentLocationDisplay (gameObject) {
   console.log(gameObject);
   talkMessage.innerHTML = '';
+  playerUsedItemDisplay.innerHTML = gameObject.inventory.activeItems[0].name;
   otherMessage.innerHTML = '';
   statRefresh(gameObject);
-  playerUsedItemDisplay.innerHTML = gameObject.inventory[0].name;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
@@ -139,6 +147,14 @@ function attack () {
   .catch(error => console.log(error));
 }
 
+function pickup () {
+  // console.log('pickup');
+  return fetch('/games/pickup', {method: 'POST'})
+  .then(response => response.json())
+  .then(data => pickupItem(data))
+  .catch(error => console.log(error));
+}
+
 newGameButton.addEventListener('click', newGame);
 moveNorthButton.addEventListener('click', moveNorth);
 moveWestButton.addEventListener('click', moveWest);
@@ -155,3 +171,4 @@ restForm.addEventListener('submit', function (event) {
 });
 
 attackButton.addEventListener('click', attack);
+pickupButton.addEventListener('click', pickup);
