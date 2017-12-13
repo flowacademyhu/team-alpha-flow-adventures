@@ -6,6 +6,9 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 let talkButton = document.querySelector('.talk');
+let restButton = document.querySelector('.rest-submit');
+let restSelect = document.querySelector('.rest-dropdown');
+let restForm = document.querySelector('.rest-form');
 
 let warningMessage = document.querySelector('.warning');
 let playerHealthDisplay = document.querySelector('.player-health-display');
@@ -24,6 +27,7 @@ let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
 let talkMessage = document.querySelector('.talk-message');
+let selectedRestValue;
 
 function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
@@ -90,9 +94,33 @@ function talk () {
     .catch(error => console.log(error));
 }
 
+function rest () {
+  let payload = {restedRoundNumber: selectedRestValue};
+  var data = new FormData();
+  data.append('json', JSON.stringify(payload));
+
+  fetch("/games/rest", {
+    method: 'POST',
+    body: data
+  })
+  .then(function (res) { return res.json(); })
+  .then(function (data) {
+    alert( JSON.stringify(data));
+  });
+}
+
 newGameButton.addEventListener('click', newGame);
 moveNorthButton.addEventListener('click', moveNorth);
 moveWestButton.addEventListener('click', moveWest);
 moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
 talkButton.addEventListener('click', talk);
+restButton.addEventListener('click', rest);
+restSelect.addEventListener('change', function () {
+  console.log(this.value);
+  selectedRestValue = this.value;
+});
+restForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  rest();
+});

@@ -52,4 +52,9 @@ router.post('/games/talk', (request, response) => {
   response.json(talk(gameObject));
 });
 
+router.post('/games/rest', (request, response) => {
+  console.log(request.body);
+  response.json('akarmmi');
+});
+
 module.exports = router;
