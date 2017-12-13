@@ -1,7 +1,5 @@
 'use strict';
 
-const gameObject = require('../../../bin/game');
-
 module.exports = function (gameObject, inValue) {
   let player = gameObject.player;
   let round = gameObject.round;
