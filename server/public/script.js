@@ -96,16 +96,18 @@ function talk () {
 
 function rest () {
   let payload = {restedRoundNumber: selectedRestValue};
-  var data = new FormData();
-  data.append('json', JSON.stringify(payload));
 
-  fetch("/games/rest", {
+  fetch('/games/rest', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
     method: 'POST',
-    body: data
+    body: ('json', JSON.stringify(payload))
   })
   .then(function (res) { return res.json(); })
   .then(function (data) {
-    alert( JSON.stringify(data));
+    alert(JSON.stringify(data));
   });
 }
 
@@ -115,9 +117,7 @@ moveWestButton.addEventListener('click', moveWest);
 moveEastButton.addEventListener('click', moveEast);
 moveSouthButton.addEventListener('click', moveSouth);
 talkButton.addEventListener('click', talk);
-restButton.addEventListener('click', rest);
 restSelect.addEventListener('change', function () {
-  console.log(this.value);
   selectedRestValue = this.value;
 });
 restForm.addEventListener('submit', function (event) {

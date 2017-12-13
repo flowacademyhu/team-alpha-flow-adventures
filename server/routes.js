@@ -5,6 +5,7 @@ const router = express.Router();
 const game = require('../bin/game');
 const movement = require('../app/controllers/actions/movement');
 const talk = require('../app/controllers/actions/talk');
+let rest = require('../app/controllers/actions/rest');
 let gameObject;
 
 router.get('/npcs', npcsControllers.index);
@@ -53,8 +54,7 @@ router.post('/games/talk', (request, response) => {
 });
 
 router.post('/games/rest', (request, response) => {
-  console.log(request.body);
-  response.json('akarmmi');
+  response.json(rest(gameObject, request.body.value));
 });
 
 module.exports = router;
