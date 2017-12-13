@@ -6,10 +6,12 @@ module.exports = function (gameObject) {
   let n = 1;
   let targetNpc = gameObject.map.matrixCurrentPosition.currentNpc;
   if (targetNpc === null) {
-    return 'Kit?';
+    gameObject.attackMessage = 'Kit?';
+    return gameObject;
   }
   if (targetNpc !== null && targetNpc.hp < 1) {
-    return 'A(z) ' + targetNpc.name + ' halott, nincs kivel harcolnod.';
+    gameObject.attackMessage = 'A(z) ' + targetNpc.name + ' halott, nincs kivel harcolnod.';
+    return gameObject;
   }
   if (targetNpc !== null && targetNpc.hp > 0) {
     while (targetNpc.hp > 0 && gameObject.player.hp > 0) {
@@ -27,8 +29,10 @@ module.exports = function (gameObject) {
       console.log('--------------------------------------');
     }
     if (targetNpc.items !== null && targetNpc.hp <= 0) {
-      return 'A(z) ' + targetNpc.name + ' meghalt. Elejtette a(z) <span class="useable-items interactables">' + targetNpc.items.name + '</span>-t';
+      gameObject.attackMessage = 'A(z) ' + targetNpc.name + ' meghalt. Elejtette a(z) <span class="useable-items interactables">' + targetNpc.items.name + '</span>-t';
+      return gameObject;
     }
-    return 'Jelenlegi életerőd ' + gameObject.player.hp + ' || ellenfeled hátramaradó életereje ' + targetNpc.hp;
+    gameObject.attackMessage = 'Jelenlegi életerőd ' + gameObject.player.hp + ' || ellenfeled hátramaradó életereje ' + targetNpc.hp;
+    return gameObject;
   }
 };

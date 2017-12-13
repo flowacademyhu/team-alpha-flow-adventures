@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const sequelize = require('./server/services/sequelize');
+const bodyParser = require('body-parser');
 //const Context = require('./server/models/context');
 
 const router = require('./server/routes');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('views', './server/views/');
 app.set('view engine', 'hbs');
