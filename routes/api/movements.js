@@ -1,6 +1,6 @@
 const express = require('express');
 const movements = express();
-const move = require('../../../app/controllers/actions/movement');
+const move = require('../../app/controllers/actions/movement');
 
 movements.put('/north', (request, response) => {
   move('north', global.gameObject);
