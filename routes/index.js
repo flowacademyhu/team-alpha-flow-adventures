@@ -3,7 +3,7 @@ const router = express();
 const api = require('./api');
 
 router.use('/api', api);
-router.set('views', '../views/');
+router.set('views', './views/');
 
 router.get('/', function (req, res) {
   res.render('index');
