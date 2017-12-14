@@ -83,42 +83,42 @@ function currentLocationDisplay (gameObject) {
 }
 
 function newGame () {
-  return fetch('/games', {method: 'POST'})
+  return fetch('/api/game', {method: 'POST'})
     .then(response => response.json())
     .then(data => currentLocationDisplay(data))
     .catch(error => console.log(error));
 }
 
 function moveNorth () {
-  return fetch('/games/movements/north', {method: 'PUT'})
+  return fetch('/api/movements/north', {method: 'PUT'})
     .then(response => response.json())
     .then(data => currentLocationDisplay(data))
     .catch(error => console.log(error));
 }
 
 function moveWest () {
-  return fetch('/games/movements/west', {method: 'PUT'})
+  return fetch('/api/movements/west', {method: 'PUT'})
   .then(response => response.json())
   .then(data => currentLocationDisplay(data))
   .catch(error => console.log(error));
 }
 
 function moveEast () {
-  return fetch('/games/movements/east', {method: 'PUT'})
+  return fetch('/api/movements/east', {method: 'PUT'})
   .then(response => response.json())
   .then(data => currentLocationDisplay(data))
   .catch(error => console.log(error));
 }
 
 function moveSouth () {
-  return fetch('/games/movements/south', {method: 'PUT'})
+  return fetch('/api/movements/south', {method: 'PUT'})
     .then(response => response.json())
     .then(data => currentLocationDisplay(data))
     .catch(error => console.log(error));
 }
 
 function talk () {
-  return fetch('/games/talk', {method: 'POST'})
+  return fetch('/api/talk', {method: 'POST'})
     .then(response => response.json())
     .then(data => talkWithNpc(data))
     .catch(error => console.log(error));
@@ -127,7 +127,7 @@ function talk () {
 function rest () {
   let payload = {restedRoundNumber: selectedRestValue};
 
-  fetch('/games/rest', {
+  fetch('/api/rest', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -141,15 +141,14 @@ function rest () {
 }
 
 function attack () {
-  return fetch('/games/attack', {method: 'POST'})
+  return fetch('/api/attack', {method: 'POST'})
   .then(response => response.json())
   .then(data => attackNpc(data))
   .catch(error => console.log(error));
 }
 
 function pickup () {
-  // console.log('pickup');
-  return fetch('/games/pickup', {method: 'POST'})
+  return fetch('/api/pickup', {method: 'POST'})
   .then(response => response.json())
   .then(data => pickupItem(data))
   .catch(error => console.log(error));
