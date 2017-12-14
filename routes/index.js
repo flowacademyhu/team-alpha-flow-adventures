@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express();
-const api = require('./routes/api');
+const api = require('./api');
 
 router.use('/api', api);
-router.set('views', './server/views/');
+router.set('views', '../views/');
 
 router.get('/', function (req, res) {
   res.render('index');
