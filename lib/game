@@ -1,17 +1,7 @@
 #!/usr/bin/env nodejs
 'use strict';
 
-const read = require('readline-sync');
-const position = require('../app/models/game-area/starter-position');
-const map = require('../app/models/game-area/index');
-const gameWin = require('../lib/game-win');
-const command = require('../lib/command');
-const context = require('../app/models/game-state');
-const playerDead = require('../lib/player-dead');
-const player = require('../app/models/characters/player');
-const round = require('../lib/round');
-const prologue = require('../lib/prologue');
-const ContextModel = require('../app/models/context');
+const ContextModel = require('./models/context');
 
 function game () {
   // prologue();
