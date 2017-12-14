@@ -1,9 +1,9 @@
 const express = require('express');
 const actions = express();
-const talk = require('../../app/controllers/actions/talk');
-const rest = require('../../app/controllers/actions/rest');
-const attack = require('../../app/controllers/actions/attack/attack');
-const pickup = require('../../app/controllers/actions/inventory-controll/pick-up');
+const talk = require('../../lib/controllers/actions/talk');
+const rest = require('../../lib/controllers/actions/rest');
+const attack = require('../../lib/controllers/actions/attack/attack');
+const pickup = require('../../lib/controllers/actions/inventory-controll/pick-up');
 
 actions.post('/talk', (request, response) => {
   response.json(talk(global.gameObject));
