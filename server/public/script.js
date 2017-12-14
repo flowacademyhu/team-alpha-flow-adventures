@@ -118,7 +118,7 @@ function moveSouth () {
 }
 
 function talk () {
-  return fetch('/api/talk', {method: 'POST'})
+  return fetch('/api/actions/talk', {method: 'POST'})
     .then(response => response.json())
     .then(data => talkWithNpc(data))
     .catch(error => console.log(error));
@@ -127,7 +127,7 @@ function talk () {
 function rest () {
   let payload = {restedRoundNumber: selectedRestValue};
 
-  fetch('/api/rest', {
+  fetch('/api/actions/rest', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -141,14 +141,14 @@ function rest () {
 }
 
 function attack () {
-  return fetch('/api/attack', {method: 'POST'})
+  return fetch('/api/actions/attack', {method: 'POST'})
   .then(response => response.json())
   .then(data => attackNpc(data))
   .catch(error => console.log(error));
 }
 
 function pickup () {
-  return fetch('/api/pickup', {method: 'POST'})
+  return fetch('/api/actions/pickup', {method: 'POST'})
   .then(response => response.json())
   .then(data => pickupItem(data))
   .catch(error => console.log(error));

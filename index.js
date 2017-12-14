@@ -11,4 +11,7 @@ app.set('view engine', 'hbs');
 app.engine('hbs', hbs.__express);
 app.use(express.static('./server/public'));
 app.use('/', router);
+app.on('error', (err) => {
+  console.log(err);
+});
 app.listen(3000);
