@@ -32,7 +32,7 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
-let selectedRestValue;
+let selectedRestValue = 1;
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
 let pickupMessage = document.querySelector('.other-message');
