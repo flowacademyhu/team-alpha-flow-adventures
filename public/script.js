@@ -36,6 +36,7 @@ let selectedRestValue;
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
 let pickupMessage = document.querySelector('.other-message');
+let gameWinMessage = document.querySelector('.other-message');
 
 let attackButton = document.querySelector('.attack');
 
@@ -61,6 +62,10 @@ function playerRest (gameObject) {
 
 function pickupItem (gameObject) {
   pickupMessage.innerHTML = gameObject.itemMessage;
+}
+
+function gameWin (gameObject) {
+  pickupMessage.innerHTML = gameObject.gameWinMessage;
 }
 
 function currentLocationDisplay (gameObject) {
@@ -148,6 +153,13 @@ function attack () {
 }
 
 function pickup () {
+  return fetch('/api/actions/pickup', {method: 'POST'})
+  .then(response => response.json())
+  .then(data => pickupItem(data))
+  .catch(error => console.log(error));
+}
+
+function gamewin () {
   return fetch('/api/actions/pickup', {method: 'POST'})
   .then(response => response.json())
   .then(data => pickupItem(data))
