@@ -6,10 +6,10 @@ let moveWestButton = document.querySelector('.move-west');
 let moveEastButton = document.querySelector('.move-east');
 let moveSouthButton = document.querySelector('.move-south');
 let talkButton = document.querySelector('.talk');
-
 let pickupButton = document.querySelector('.pickup');
-
+let attackButton = document.querySelector('.attack');
 let restButton = document.querySelector('.rest-submit');
+
 let restSelect = document.querySelector('.rest-dropdown');
 let restForm = document.querySelector('.rest-form');
 
@@ -39,7 +39,16 @@ let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
 let pickupMessage = document.querySelector('.other-message');
 
-let attackButton = document.querySelector('.attack');
+function disableButtons (condition) {
+  moveNorthButton.disabled = condition;
+  moveWestButton.disabled = condition;
+  moveEastButton.disabled = condition;
+  moveSouthButton.disabled = condition;
+  talkButton.disabled = condition;
+  pickupButton.disabled = condition;
+  restButton.disabled = condition;
+  attackButton.disabled = condition;
+}
 
 function talkWithNpc (gameObject) {
   talkMessage.innerHTML = gameObject;
@@ -55,6 +64,16 @@ function attackNpc (gameObject) {
   playerRoundDisplay.innerHTML = gameObject.round;
   attackMessage.innerHTML = gameObject.attackMessage;
   statRefresh(gameObject);
+  if (gameObject.death) {
+    attackMessage.innerHTML = gameObject.death;
+    disableButtons(true);
+    gameObject = null;
+  }
+  if (gameObject.win) {
+    attackMessage.innerHTML = gameObject.win;
+    disableButtons(true);
+    gameObject = null;
+  }
 }
 
 function playerRest (gameObject) {
@@ -91,6 +110,7 @@ function newGame () {
   return fetch('/api/game', {method: 'POST'})
     .then(response => response.json())
     .then(data => currentLocationDisplay(data))
+    .then(() => disableButtons(false))
     .catch(error => console.log(error));
 }
 
