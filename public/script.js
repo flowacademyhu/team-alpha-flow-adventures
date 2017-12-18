@@ -64,6 +64,12 @@ function attackNpc (gameObject) {
   if (gameObject.death) {
     attackMessage.innerHTML = gameObject.death;
     disableButtons(true);
+    gameObject = null;
+  }
+  if (gameObject.win) {
+    attackMessage.innerHTML = gameObject.win;
+    disableButtons(true);
+    gameObject = null;
   }
 }
 
