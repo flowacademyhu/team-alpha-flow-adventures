@@ -21,6 +21,8 @@ let playerDefenseDisplay = document.querySelector('.player-defense-display');
 
 let playerUsedItemDisplay = document.querySelector('.player-used-item-display');
 
+let playerRoundDisplay = document.querySelector('.player-rounds-display');
+
 let currentFieldDescription = document.querySelector('.field-desc');
 let northDescription = document.querySelector('.north-desc');
 let westDescription = document.querySelector('.west-desc');
@@ -32,7 +34,7 @@ let westMovement = document.querySelector('.move-west');
 let eastMovement = document.querySelector('.move-east');
 let southMovement = document.querySelector('.move-south');
 
-let selectedRestValue;
+let selectedRestValue = 1;
 let talkMessage = document.querySelector('.other-message');
 let attackMessage = document.querySelector('.other-message');
 let pickupMessage = document.querySelector('.other-message');
@@ -51,11 +53,13 @@ function statRefresh (gameObject) {
 }
 
 function attackNpc (gameObject) {
+  playerRoundDisplay.innerHTML = gameObject.round;
   attackMessage.innerHTML = gameObject.attackMessage;
   statRefresh(gameObject);
 }
 
 function playerRest (gameObject) {
+  playerRoundDisplay.innerHTML = gameObject.round;
   otherMessage.innerHTML = gameObject.otherMessage;
   statRefresh(gameObject);
 }
@@ -74,6 +78,7 @@ function currentLocationDisplay (gameObject) {
   playerUsedItemDisplay.innerHTML = gameObject.inventory.activeItems[0].name;
   otherMessage.innerHTML = '';
   statRefresh(gameObject);
+  playerRoundDisplay.innerHTML = gameObject.round;
   warningMessage.innerHTML = gameObject.warning;
   currentFieldDescription.innerHTML = gameObject.map.matrixCurrentPosition
     .fieldDesc;
