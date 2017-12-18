@@ -20,6 +20,12 @@ button, select, form{
   background-color:#e5eeee;
 }
 
+.main-display{
+  height: 250px;
+  border: solid 1px lightblue;
+  padding: 15px;
+}
+
 .warning{
   color: red;
 }
