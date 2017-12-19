@@ -2,7 +2,7 @@
   {{!-- Upperside of page --}}
   <div class="row upper-text-display ">
     {{!-- Location and field info display --}}
-    <div class="col-sm-5">
+    <div class="col-sm-5 col-sm-offset-2">
       <div class="main-display">
         <p class="warning"></p>
         <p class="field-desc"></p>
@@ -14,19 +14,16 @@
       </div>
     </div>
     {{!-- Side button display --}}
-    <div class="col-sm-2 text-left">
+    <div class="col-sm-3 text-left">
       <table class="table table-inverse">
     <tr>
     <th>Életerő</th>
     <td><span class="player-health-display"></span></td>
     </tr>
-    <tfoot>
     <tr>
     <th>Támadás</th>
     <td><span class="player-attack-display"></span></td>
     </tr>
-    </tfoot>
-    <tbody>
     <tr>
     <th>Védelem</th>
     <td><span class="player-defense-display"></span></td>
@@ -39,14 +36,13 @@
     <th>Körök száma</th>
     <td><span class="player-rounds-display"></span></td>
     </tr>
-    </tbody>
     </table>
     </div>
   </div>
   {{!-- Bottom side of page --}}
   <div class="row">
     {{!-- Movement buttons --}}
-    <div class="col-sm-2 text-center">
+    <div class="col-sm-2 text-center col-sm-offset-2">
       <button class="btn btn-primary glyphicon glyphicon-menu-up move-north" ></button>
       <div>
       <button class="btn btn-primary glyphicon glyphicon-menu-left eastwest move-west"></button>

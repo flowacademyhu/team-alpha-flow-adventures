@@ -24,6 +24,7 @@ button, select, form{
   height: 250px;
   border: solid 1px lightblue;
   padding: 15px;
+  margin-bottom: 15px;
 }
 
 .warning{
