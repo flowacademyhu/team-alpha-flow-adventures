@@ -9,6 +9,7 @@ let talkButton = document.querySelector('.talk');
 let pickupButton = document.querySelector('.pickup');
 let attackButton = document.querySelector('.attack');
 let restButton = document.querySelector('.rest-submit');
+let useButton = document.querySelector('.use');
 
 let restSelect = document.querySelector('.rest-dropdown');
 let restForm = document.querySelector('.rest-form');
@@ -49,6 +50,7 @@ function disableButtons (condition) {
   pickupButton.disabled = condition;
   restButton.disabled = condition;
   attackButton.disabled = condition;
+  useButton.disabled = condition;
 }
 
 function talkWithNpc (gameObject) {

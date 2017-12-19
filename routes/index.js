@@ -6,10 +6,6 @@ router.use('/api', api);
 router.set('views', './views/');
 
 router.get('/', function (req, res) {
-  res.render('index');
-});
-
-router.get('/play', function (req, res) {
   res.render('play');
 });
 

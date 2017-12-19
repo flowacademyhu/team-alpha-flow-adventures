@@ -1,23 +1,46 @@
 <div>
   {{!-- Upperside of page --}}
-  <div class="row upper-text-display">
+  <div class="row upper-text-display ">
     {{!-- Location and field info display --}}
     <div class="col-sm-5">
-      <p class="warning"></p>
-      <p class="field-desc"></p>
-      <p class="north-desc"></p>
-      <p class="south-desc"></p>
-      <p class="east-desc"></p>
-      <p class="west-desc"></p>
-      <p class="other-message"></p>
+      <div class="main-display">
+        <p class="warning"></p>
+        <p class="field-desc"></p>
+        <p class="north-desc"></p>
+        <p class="south-desc"></p>
+        <p class="east-desc"></p>
+        <p class="west-desc"></p>
+        <p class="other-message"></p>
+      </div>
     </div>
     {{!-- Side button display --}}
     <div class="col-sm-2 text-left">
-      <p>Életerő: <span class="player-health-display"></span></p>
-      <p>Támadás: <span class="player-attack-display"></span></p>
-      <p>Védelem: <span class="player-defense-display"></span> </p>
-      <p>Használt tárgy: <span class="player-used-item-display"></span></p>
-      <p>Körök száma: <span class="player-rounds-display"></span> </p>
+      <table class="table table-inverse">
+    <tr>
+    <th>Életerő</th>
+    <td><span class="player-health-display"></span></td>
+    </tr>
+    <tfoot>
+    <tr>
+    <th>Támadás</th>
+    <td><span class="player-attack-display"></span></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr>
+    <th>Védelem</th>
+    <td><span class="player-defense-display"></span></td>
+    </tr>
+    <tr>
+    <th>Használt tárgy</th>
+    <td><span class="player-used-item-display"></span></td>
+    </tr>
+    <tr>
+    <th>Körök száma</th>
+    <td><span class="player-rounds-display"></span></td>
+    </tr>
+    </tbody>
+    </table>
     </div>
   </div>
   {{!-- Bottom side of page --}}
@@ -36,7 +59,7 @@
       <button class="btn btn-danger action-buttons attack">Támadás</button>
       <button class="btn btn-success action-buttons talk">Beszéd</button>
       <button class="btn btn-primary action-buttons pickup">Felvesz</button>
-      <button class="btn btn-primary action-buttons">Használ</button>
+      <button class="btn btn-primary action-buttons use">Használ</button>
 
       <form action="" class="rest-form">
       <select name="rest" class="rest-dropdown" id="">       
