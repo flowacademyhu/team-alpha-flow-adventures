@@ -94,7 +94,6 @@ function gameWin (gameObject) {
 }
 
 function currentLocationDisplay (gameObject) {
-  console.log(gameObject);
   talkMessage.innerHTML = '';
   playerUsedItemDisplay.innerHTML = gameObject.inventory.activeItems[0].name;
   otherMessage.innerHTML = '';
